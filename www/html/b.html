@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=gb2312">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="Keywords" content="web app">
+<meta name="description" content="a test demo of web app">
+	<title></title>
+</head>
+<body>
+<canvas id="cvs"></canvas>
+<script type="text/javascript">
+
+	window.addEventListener('message', receiver, false);
+	function receiver(e) {
+		console.log('In b: ' + e.data);
+	  if (e.origin !== 'http://localhost:8080') {
+	    if (e.data == 'Hello world') {
+	    	console.log('b');
+	      e.source.postMessage('Hello b', e.origin);
+	    } else {
+	      console.log('In b: ' + e.data);
+	    }
+	  }
+	}
+
+</script>
+</body>
+</html>

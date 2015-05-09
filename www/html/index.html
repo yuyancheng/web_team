@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=gb2312">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="Keywords" content="web app">
+<meta name="description" content="a test demo of web app">
+	<title></title>
+	<style type="text/css">
+		html, body{
+			margin: 0;
+			padding: 0;
+		}
+		form{
+			border: 1px solid #999;
+		}
+
+		.pic{
+			width: 200px;
+			height: 300px;
+			overflow: hidden;
+		}
+		.pic img{
+			transition: 1s;
+		}
+		.pic:hover img{
+			transform: scale(1.6);
+		}
+		.clr{
+			width: 200px;
+			height: 200px;
+			transition: 1s;
+			background-color: #fff;
+		}
+		.clr:hover{
+			transform: rotate(720deg);
+			border-radius: 100px;
+			background-color: #f00;
+		}
+
+		@media screen and (min-width: 1000px){
+			.magazine{
+				width: 100%;
+			}
+		}
+		@media (width: 1024px) and (max-height: 768px){
+			.magazine{
+				width: 60%;
+			}
+		}
+
+	</style>
+</head>
+<body>
+<div class="pic">
+	<img width="200" src="../css/img/c.jpg">
+</div>
+<div class="clr"></div>
+<div class="magazine">
+Important note: the behavior of dgram.Socket#bind() has changed in v0.10 and is always asynchronous now. If you have code that looks like this:
+</div>
+<input type="text" list="data">
+<datalist id="data">
+	<option default>a</option>
+	<option>b</option>
+	<option>c</option>
+	<option>d</option>
+</datalist>
+<script>
+	// var worker = new Worker("../src/worker.js");
+	// worker.postMessage("test of web worker.");
+	// worker.onmessage = function(e){
+	// 	console.log(e.data);
+	// 	worker.terminate();
+	// };
+	// console.log("ended?");
+
+	// if(typeof EventSource !== "undefined"){
+	// 	var source = new EventSource("http://localhost:8080/demo1/cgi/sse.php");
+	// 	source.onmessage = function(e){
+	// 		console.log(e.data);
+	// 	};
+	// }
+
+	var obj = function(){
+		this.fun = function(){
+			return function () {
+				console.log(this === window);
+			}
+		};
+	};
+
+	//new obj().fun()();
+
+	 var num = -1;
+	console.log(5 * 1.0155);
+	console.log(13&7);
+	console.log(parseInt('111', 2))
+	console.log(num.toString(2))
+
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=gb2312">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="Keywords" content="web app">
+<meta name="description" content="a test demo of web app">
+	<title></title>
+</head>
+<body>
+<canvas id="cvs"></canvas>
+<img id="imgHolder" src="" width="400" height="300">
+<iframe src="a.html" width="500" height="300"></iframe>
+<iframe src="b.html" width="500" height="300"></iframe>
+<script type="text/javascript">
+window.onload = function(){
+	var cvs = document.getElementById("cvs"),
+		w = 1000,
+		h = 720,
+		R = 200,
+		r = 100,
+		ctx = cvs.getContext("2d");
+	cvs.width = w;
+	cvs.height = h;
+
+	ctx.fillStyle = 'black';
+	ctx.lineWidth = 10;
+	ctx.strokeStyle = "#ff0000";
+
+	ctx.beginPath();
+
+	for(var i=0; i<5; i++){
+		ctx.lineTo(Math.cos((i * 72 + 18)/180 * Math.PI) * R + w/2, 
+			-Math.sin((i * 72 + 16)/180 * Math.PI) * R + h/2);
+		ctx.lineTo(Math.cos((i * 72 + 54)/180 * Math.PI) * r + w/2, 
+			-Math.sin((i * 72 + 54)/180 * Math.PI) * r + h/2);
+	}
+	
+	ctx.closePath();
+	ctx.stroke();
+
+	//var o = document.getElementsByTagName('iframe')[1];
+	//o.contentWindow.postMessage('Hello world', 'http://localhost:8080');
+
+	window.postMessage('Hello all', 'http://localhost:8080');
+	window.addEventListener('message', receiver, false);
+	function receiver(e) {
+		console.log('In canvas: ' + e.data);
+	  if (e.origin !== 'http://localhost:8080') {
+	    if (e.data == 'Hello all') {
+	      e.source.postMessage('Hello again', e.origin);
+	    } else {
+	      console.log('In canvas: ' + e.data);
+	    }
+	  }
+	}
+
+	var img = document.getElementById("imgHolder");
+	img.src = cvs.toDataURL();
+};
+</script>
+</body>
+</html>
